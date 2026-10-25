@@ -1,0 +1,71 @@
+# Generated build and output directories
+build/
+build-*/
+cmake-build-*/
+out/
+output/
+dist/
+Debug/
+Release/
+
+# CMake-generated files (including in-source builds)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+install_manifest.txt
+compile_commands.json
+Makefile
+build.ninja
+.ninja_deps
+.ninja_log
+CMakeUserPresets.json
+
+# Compiled C/C++ artifacts
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.pch
+
+# Qt-generated files and local Qt Creator settings
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*_autogen/
+.qmake.stash
+*.pro.user*
+*.qtcreator.user*
+CMakeLists.txt.user*
+
+# Local IDE settings
+.vs/
+.idea/
+*.user
+*.suo
+
+# Local environment files (keep templates shareable)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# Logs, temporary files, and OS metadata
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
