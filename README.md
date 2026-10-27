@@ -10,6 +10,18 @@ Install Qt 5 or Qt 6 with Widgets, CMake 3.16+, and a compatible C++ compiler.
 In Qt Creator, open `CMakeLists.txt`, select a desktop Qt kit, and click Run.
 Choose a build directory outside this project if you want to keep its folders unchanged.
 
+On Windows, Qt Creator is optional. With the prepared local toolchain in
+`build/_toolchain/ucrt64`, or Qt, CMake, Ninja, and GCC installed in
+`C:/msys64/ucrt64`, build from PowerShell with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\build.ps1
+```
+
+Run `./build/TypeRush.exe`, or add `-Run` to the build command to launch it
+after building. The script copies the required Qt runtime files beside the executable.
+The local toolchain is ignored by Git; a fresh checkout needs its own toolchain.
+
 The build copies the word list and style beside the executable. Scores are saved
 in `data/scores.txt` beside the executable. Run from a writable location.
 

@@ -21,6 +21,8 @@
 #include <QAbstractItemView>
 #include <cmath>
 
+using namespace std;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), timer(new QTimer(this))
 {
@@ -179,10 +181,10 @@ void MainWindow::updateDisplay()
     int maximum = survivalMode ? 30 : duration;
     ui->wpmValue->setText(QString::number(calculateWPM(), 'f', 0));
     ui->accuracyValue->setText(QString::number(calculateAccuracy(), 'f', 0) + '%');
-    ui->timeValue->setText(QString::number(static_cast<int>(std::ceil(timeLeft))) + 's');
+    ui->timeValue->setText(QString::number(static_cast<int>(ceil(timeLeft))) + 's');
     ui->timeProgress->setRange(0, maximum * 10);
-    ui->timeProgress->setValue(static_cast<int>(std::ceil(timeLeft * 10)));
-    ui->progressLabel->setText(QString("%1s / %2s").arg(static_cast<int>(std::ceil(timeLeft))).arg(maximum));
+    ui->timeProgress->setValue(static_cast<int>(ceil(timeLeft * 10)));
+    ui->progressLabel->setText(QString("%1s / %2s").arg(static_cast<int>(ceil(timeLeft))).arg(maximum));
 }
 
 void MainWindow::updateWordDisplay()
@@ -206,8 +208,8 @@ void MainWindow::updateWordDisplay()
 
     QStringList display = completedWords;
     display.append(current);
-    std::vector<std::string> upcoming = getUpcomingWords(6);
-    for (std::size_t i = 1; i < upcoming.size(); ++i)
+    vector<string> upcoming = getUpcomingWords(6);
+    for (size_t i = 1; i < upcoming.size(); ++i)
         display.append("<span style='color:#888888'>" + QString::fromStdString(upcoming[i]).toHtmlEscaped() + "</span>");
     ui->wordsLabel->setText(display.join(" "));
 
@@ -250,7 +252,7 @@ void MainWindow::showHighScores()
     heading->setWordWrap(true);
     layout->addWidget(heading);
 
-    std::vector<Score> scores = loadScores(scoresPath.toStdString());
+    vector<Score> scores = loadScores(scoresPath.toStdString());
     auto *table = new QTableWidget(static_cast<int>(scores.size()), 5, &dialog);
     table->setHorizontalHeaderLabels({"Mode", "Duration", "WPM", "Accuracy", "Survived"});
     table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);

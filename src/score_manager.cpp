@@ -3,10 +3,12 @@
 #include <algorithm>
 #include <iomanip>
 
-std::vector<Score> loadScores(const std::string &filename)
+using namespace std;
+
+vector<Score> loadScores(const string &filename)
 {
-    std::vector<Score> scores;
-    std::ifstream file(filename);
+    vector<Score> scores;
+    ifstream file(filename);
     Score score;
     while (file >> score.mode >> score.duration >> score.wpm
                 >> score.accuracy >> score.survivedSeconds) {
@@ -17,11 +19,11 @@ std::vector<Score> loadScores(const std::string &filename)
     return scores;
 }
 
-bool saveScore(const std::string &filename, const Score &score)
+bool saveScore(const string &filename, const Score &score)
 {
-    std::vector<Score> scores = loadScores(filename);
+    vector<Score> scores = loadScores(filename);
     scores.push_back(score);
-    std::sort(scores.begin(), scores.end(), [](const Score &a, const Score &b) {
+    sort(scores.begin(), scores.end(), [](const Score &a, const Score &b) {
         if (a.mode != b.mode)
             return a.mode < b.mode;
         if (a.mode == "Survival")
@@ -31,11 +33,11 @@ bool saveScore(const std::string &filename, const Score &score)
         return a.wpm > b.wpm;
     });
 
-    std::ofstream file(filename);
+    ofstream file(filename);
     if (!file)
         return false;
-    file << std::fixed << std::setprecision(2);
-    std::string previousMode;
+    file << fixed << setprecision(2);
+    string previousMode;
     int previousDuration = -1;
     int count = 0;
     for (const Score &entry : scores) {

@@ -4,11 +4,13 @@
 #include <string>
 #include <vector>
 
-void loadWords(const std::string &filename);
+using namespace std;
+
+void loadWords(const string &filename);
 void resetTyping();
-std::string getCurrentWord();
-std::vector<std::string> getUpcomingWords(int count);
-void setCurrentInput(const std::string &input);
+string getCurrentWord();
+vector<string> getUpcomingWords(int count);
+void setCurrentInput(const string &input);
 bool submitCurrentWord();
 int getCorrectCharacters();
 int getTotalCharacters();

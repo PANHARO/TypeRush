@@ -4,15 +4,17 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 struct Score {
-    std::string mode;
+    string mode;
     int duration;
     double wpm;
     double accuracy;
     double survivedSeconds;
 };
 
-std::vector<Score> loadScores(const std::string &filename);
-bool saveScore(const std::string &filename, const Score &score);
+vector<Score> loadScores(const string &filename);
+bool saveScore(const string &filename, const Score &score);
 
 #endif

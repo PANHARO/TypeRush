@@ -3,18 +3,20 @@
 #include <random>
 #include <algorithm>
 
+using namespace std;
+
 namespace {
-std::vector<std::string> words;
-std::string currentInput;
+vector<string> words;
+string currentInput;
 int wordIndex = 0;
 int correctCharacters = 0;
 int totalCharacters = 0;
 double elapsedSeconds = 0.0;
 
-int countMatches(const std::string &input, const std::string &target)
+int countMatches(const string &input, const string &target)
 {
     int matches = 0;
-    for (std::size_t i = 0; i < input.size() && i < target.size(); ++i) {
+    for (size_t i = 0; i < input.size() && i < target.size(); ++i) {
         if (input[i] == target[i])
             ++matches;
     }
@@ -22,11 +24,11 @@ int countMatches(const std::string &input, const std::string &target)
 }
 }
 
-void loadWords(const std::string &filename)
+void loadWords(const string &filename)
 {
     words.clear();
-    std::ifstream file(filename);
-    std::string word;
+    ifstream file(filename);
+    string word;
     while (file >> word)
         words.push_back(word);
 
@@ -41,8 +43,8 @@ void resetTyping()
     if (words.empty())
         loadWords("");
     // A different order makes each new round useful practice.
-    static std::mt19937 generator(std::random_device{}());
-    std::shuffle(words.begin(), words.end(), generator);
+    static mt19937 generator(random_device{}());
+    shuffle(words.begin(), words.end(), generator);
     wordIndex = 0;
     currentInput.clear();
     correctCharacters = 0;
@@ -50,14 +52,14 @@ void resetTyping()
     elapsedSeconds = 0.0;
 }
 
-std::string getCurrentWord()
+string getCurrentWord()
 {
     return words.empty() ? "" : words[wordIndex];
 }
 
-std::vector<std::string> getUpcomingWords(int count)
+vector<string> getUpcomingWords(int count)
 {
-    std::vector<std::string> upcoming;
+    vector<string> upcoming;
     if (words.empty())
         return upcoming;
     for (int i = 0; i < count; ++i)
@@ -65,7 +67,7 @@ std::vector<std::string> getUpcomingWords(int count)
     return upcoming;
 }
 
-void setCurrentInput(const std::string &input)
+void setCurrentInput(const string &input)
 {
     currentInput = input;
 }

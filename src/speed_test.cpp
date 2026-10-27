@@ -2,6 +2,8 @@
 #include "typing_engine.h"
 #include <algorithm>
 
+using namespace std;
+
 namespace {
 double timeLeft = 0.0;
 }
@@ -9,15 +11,15 @@ double timeLeft = 0.0;
 void startSpeedTest(int durationSeconds)
 {
     resetTyping();
-    timeLeft = std::max(0, durationSeconds);
+    timeLeft = max(0, durationSeconds);
 }
 
 void updateSpeedTestTimer(double deltaSeconds)
 {
     if (deltaSeconds <= 0.0 || isSpeedTestOver())
         return;
-    double elapsed = std::min(deltaSeconds, timeLeft);
-    timeLeft = std::max(0.0, timeLeft - elapsed);
+    double elapsed = min(deltaSeconds, timeLeft);
+    timeLeft = max(0.0, timeLeft - elapsed);
     advanceTypingTime(elapsed);
 }
 
