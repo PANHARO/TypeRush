@@ -1,0 +1,51 @@
+name: TypeRush web checks and Pages
+
+on:
+  pull_request:
+    paths: ['web/**', 'assets/words.txt', '.github/workflows/web.yml']
+  push:
+    branches: [master, codex/typerush-installable-web]
+    paths: ['web/**', 'assets/words.txt', '.github/workflows/web.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Test rules, backups, and offline lifecycle
+        working-directory: web
+        run: npm test
+      - name: Build installable web app
+        working-directory: web
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: web/dist
+
+  deploy:
+    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/codex/typerush-installable-web')
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: typerush-pages
+      cancel-in-progress: false
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Publish TypeRush
+        id: deployment
+        uses: actions/deploy-pages@v4

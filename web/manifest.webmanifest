@@ -1,0 +1,27 @@
+{
+  "id": "./",
+  "name": "TypeRush",
+  "short_name": "TypeRush",
+  "description": "Speed typing and survival practice. Play offline and keep your personal bests.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#101010",
+  "theme_color": "#101010",
+  "lang": "en",
+  "categories": ["games", "education"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

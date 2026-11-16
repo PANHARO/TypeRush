@@ -4,6 +4,14 @@ A small C++17 and Qt Widgets typing game. The interface follows `gui.png` and
 uses `assets/style.qss` for the black, yellow, and grey theme, with the original
 keyboard logo color preserved. All code uses the existing folders.
 
+## Installable web version
+
+The companion [web app](web/README.md) works on iPhone/iPad, Android, Windows,
+and Mac through a supported browser. It includes both modes, offline practice,
+local name-and-PIN profiles, separate high scores, and JSON backup export/import.
+See its README for build, installation, recovery, and GitHub Pages instructions.
+The original C++/Qt desktop build instructions continue below.
+
 ## Build and run
 
 Install Qt 5 or Qt 6 with Widgets, CMake 3.16+, and a compatible C++ compiler.
