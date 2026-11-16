@@ -1,8 +1,30 @@
 # TypeRush
 
-A small C++17 and Qt Widgets typing game. The interface follows `gui.png` and
-uses `assets/style.qss` for the black, yellow, and grey theme, with the original
-keyboard logo color preserved. All code uses the existing folders.
+Practice your typing with Speed Test and Survival Mode, using **1,959 familiar
+English words**. Play in your browser or install the web app on your phone or computer.
+
+**[Play and install TypeRush →](https://panharo.github.io/TypeRush/)**
+
+The project includes an offline-capable web app and the original C++17/Qt Widgets
+desktop app. Both use the shared word list and the black, yellow, and grey theme.
+
+## Installable web version
+
+The companion [web app](web/README.md) works on iPhone/iPad, Android, Windows,
+and Mac through a supported browser. It includes both modes, offline practice,
+local name-and-PIN profiles, separate high scores, and JSON backup export/import.
+
+- **iPhone/iPad:** open the live site in Safari → Share → Add to Home Screen.
+- **Android:** open in Chrome → menu → Install app or Add to Home screen.
+- **Windows:** install from Chrome or Edge using the address bar or browser menu.
+- **Mac:** use Chrome's install menu or Safari → File → Add to Dock on macOS Sonoma+.
+
+Wait for **Offline ready** before playing without internet. Guests can play normally;
+sign into a local profile to save high scores. Export a backup from **High Scores**
+to keep a copy outside the app for recovery after deletion or a move to another device.
+
+See its README for build, installation, recovery, and GitHub Pages instructions.
+The original C++/Qt desktop build instructions continue below.
 
 ## Build and run
 
