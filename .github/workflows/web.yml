@@ -4,7 +4,7 @@ on:
   pull_request:
     paths: ['web/**', 'assets/words.txt', '.github/workflows/web.yml']
   push:
-    branches: [master, codex/typerush-installable-web]
+    branches: [master]
     paths: ['web/**', 'assets/words.txt', '.github/workflows/web.yml']
   workflow_dispatch:
 
@@ -31,7 +31,7 @@ jobs:
           path: web/dist
 
   deploy:
-    if: github.event_name != 'pull_request' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/codex/typerush-installable-web')
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
     needs: check
     runs-on: ubuntu-latest
     permissions:

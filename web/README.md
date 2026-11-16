@@ -73,13 +73,12 @@ the same installation/storage identity. Changing domains or paths may need backu
 
 ## Publish with GitHub Pages
 
-The repository workflow tests pull requests. The initial `codex/typerush-installable-web`
-branch and subsequent pushes to `master` test/build and publish `web/dist` using GitHub
-Pages. The initial branch can therefore be reviewed while the live web version is usable.
+The repository workflow tests pull requests. Pushes to the default branch, `master`,
+test/build and publish `web/dist` using GitHub Pages.
 A repository administrator must set
 Settings → Pages → Build and deployment → Source to **GitHub Actions** once.
 The expected default URL is `https://panharo.github.io/TypeRush/`. Use the actual URL returned by the
-deployment. The workflow supports manual dispatch on the initial branch or `master` as well.
+deployment. The workflow supports manual dispatch on `master` as well.
 
 The portable `dist` folder can also be hosted on another HTTPS static host.
 For Vercel or Cloudflare Pages, use build command `npm --prefix web run build`,
